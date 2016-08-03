@@ -37,6 +37,7 @@ executable tps-report
   build-depends:       base >=4.8 && <5
                      , tps-report
                      , bytestring
+                     , directory
                      , dotenv
                      , errors
                      , network-uri

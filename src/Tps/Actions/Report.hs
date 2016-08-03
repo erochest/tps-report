@@ -12,4 +12,4 @@ import           Tps.Types
 
 
 genReport :: URI -> ComputingID -> BS.ByteString -> FilePath -> Script ()
-genReport = undefined
+genReport _libanalytics _compId _passWord _outputFile = undefined
