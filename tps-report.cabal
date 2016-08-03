@@ -13,15 +13,18 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Tps.Actions.Default
+  exposed-modules:     Tps.Actions.Report
                      , Tps.Types
   -- other-modules:       
   -- other-extensions:    
   build-depends:       base >=4.8 && <4.9
+                     , bytestring
                      , errors
                      , lens
+                     , network-uri
                      , text
                      , text-format
+                     , wreq
   hs-source-dirs:      src
   default-language:    Haskell2010
 
@@ -33,10 +36,12 @@ executable tps-report
   -- other-extensions:    
   build-depends:       base >=4.8 && <5
                      , tps-report
+                     , bytestring
+                     , dotenv
                      , errors
+                     , network-uri
                      , text
                      , optparse-applicative
-                     , errors
   hs-source-dirs:      app
   ghc-options:         -threaded
                        -rtsopts

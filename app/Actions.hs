@@ -8,11 +8,12 @@ module Actions where
 
 import           Control.Error
 
-import           Tps.Actions.Default
+import           Tps.Actions.Report
 
 import           Types
 
 
 action :: Actions -> Script ()
 
-action Default{..} = defaultAction defaultInput defaultOutput
+action Report{..} = genReport reportLibAnalytics reportComputingId undefined
+                              reportOutput

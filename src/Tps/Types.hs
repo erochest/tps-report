@@ -15,5 +15,9 @@ module Tps.Types where
 
 -- import           Control.Lens
 -- import           Data.Data
--- import qualified Data.Text              as T
+import qualified Data.Text              as T
 -- import           GHC.Generics           hiding (to)
+
+
+type ComputingID = T.Text
+type AuthInfo    = (T.Text, T.Text)

@@ -4,13 +4,16 @@ BUILD_FLAGS=--pedantic
 
 RUN=stack exec -- tps-report
 
+run: build report.md
+
+report.md:
+	$(RUN) --libanalytics "$(LIBANALYTICS)" --username $(COMP_ID) \
+		--output $@
+
 init: stack.yaml
 
 stack.yaml:
 	stack init --prefer-nightly
-
-run: build
-	$(RUN) --help
 
 docs:
 	stack haddock
@@ -61,7 +64,13 @@ watch:
 	ghcid "--command=stack ghci"
 
 watch-test:
-	stack test --file-watch --pedantic # --test-arguments "-m TODO"
+	stack test $(BUILD_FLAGS) --file-watch # --test-arguments "-m TODO"
+
+watch-build:
+	stack build $(BUILD_FLAGS) --file-watch --fast
+
+watch-run:
+	stack build $(BUILD_FLAGS) --file-watch --fast --exec make
 
 restart: distclean init build
 
